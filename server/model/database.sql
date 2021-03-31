@@ -18,7 +18,6 @@ CREATE TABLE itinerary(
     arts VARCHAR,
     nightlife VARCHAR,
     shopping VARCHAR,
-    
     user_id integer NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user(_id)
 );

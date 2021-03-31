@@ -29,6 +29,7 @@
     "@material-ui/core": "^4.11.3",
     "@material-ui/pickers": "^3.3.10",
     "@testing-library/jest-dom": "^5.11.10",
+    "axios": "^0.21.1",
     "babel-loader": "^8.2.2",
     "bcrypt": "^5.0.1",
     "concurrently": "^6.0.0",
