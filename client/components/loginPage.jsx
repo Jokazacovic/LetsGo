@@ -4,6 +4,7 @@ import { UserContext } from '../contexts/UserContext';
 export default function Login(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
   // Pull state into component from UserContext using 'useContext' hook
   const [userInfo, setUserInfo] = useContext(UserContext);
 
@@ -19,7 +20,7 @@ export default function Login(props) {
     })
       .then((res) => res.json())
       .then((res) => {
-        // Coordinate with backend
+        // Coordinate with backend for fetch response data
         setUserInfo({ trips: res });
       })
       .then(() => {
