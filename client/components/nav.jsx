@@ -5,7 +5,7 @@ const Nav = () => (
   <div className="nav-bar">
     <nav>
       <span>
-      <Link to="/">
+      <Link to="/landing">
         Let's Go
       </Link>
         <Link to="/landing">
@@ -13,6 +13,9 @@ const Nav = () => (
         </Link>
         <Link to="/input">
           <button type="button">New Trip</button>
+        </Link>
+        <Link to="/">
+          <button type="button">Sign Out</button>
         </Link>
       </span>
     </nav>
