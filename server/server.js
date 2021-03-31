@@ -1,4 +1,5 @@
 const path = require('path');
+const cors = require('cors');
 const express = require('express');
 const { dirname } = require('path');
 const app = express();
@@ -6,6 +7,7 @@ const usersController = require('./controllers/usersController');
 //const itineraryController = require("./controllers/itineraryController");
 
 // parse data to json
+app.use(cors());
 app.use(express.json());
 
 // serve static data
@@ -32,8 +34,10 @@ app.post('/itinerary', (req, res) => {
   res.sendStatus(200);
 });
 
-// app.delete('/itinerary', (req, res) => {
-// })
+app.post('/idk', (req, res) => {
+  console.log('request body:', req.body);
+  return res.sendStatus(200);
+});
 
 // catch all for invalid path
 app.use('*', (req, res) => res.sendStatus(404));
