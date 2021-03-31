@@ -6,7 +6,7 @@ class Input extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      location : '',
+      location: '',
       date: '2021-04-01',
       radius: 1600,
       budget: '$',
@@ -16,8 +16,8 @@ class Input extends Component {
       Hotels: false,
       'Active Life': false,
       'Arts & Entertainment': false,
-      'Nightlife': false,
-      Shopping: false
+      Nightlife: false,
+      Shopping: false,
     };
 
     this.changeHandler = this.changeHandler.bind(this);
@@ -26,25 +26,25 @@ class Input extends Component {
   }
 
   // onChange handlers for Location and Date with inputted value
-  changeHandler (e){
-    this.setState(state => ({
+  changeHandler(e) {
+    this.setState((state) => ({
       [e.target.name]: e.target.value,
     }));
-  } 
+  }
 
   // onChange handlers for checkboxes
-  forCheckList (e) {
+  forCheckList(e) {
     const property = e.target.name;
     if (this.state[property]) {
       this.setState({
-        [property] : false,
-      })
+        [property]: false,
+      });
     } else {
       this.setState({
-        [property] : true,
-      })
+        [property]: true,
+      });
     }
-  }    
+  }
 
   // onClick functionality for submit button
   handleClick(e) {
@@ -55,7 +55,7 @@ class Input extends Component {
       if (ele.toString() === 'true') sendForm = true;
     });
     console.log(sendForm);
-    // if at least one activity is checked, fetch POST request 
+    // if at least one activity is checked, fetch POST request
     if (sendForm) {
       fetch('http://localhost:3000/', {
         method: 'POST',
@@ -64,14 +64,13 @@ class Input extends Component {
         },
         body: JSON.stringify(this.state),
       })
-      .then((res) => res.json())
-      .then(() => {
-        this.props.history.push('/trip')
-      })
-      .catch((err) => console.log('error has occurred in Fetching this.state'))
-    }
-    else {
-      alert('Check at least one activity!')
+        .then((res) => res.json())
+        .then(() => {
+          this.props.history.push('/trip');
+        })
+        .catch((err) => console.log('error has occurred in Fetching this.state'));
+    } else {
+      alert('Check at least one activity!');
     }
   }
 
@@ -81,12 +80,12 @@ class Input extends Component {
     const checkLists = lists.map((element) => (
       <div>
         <label>
-          <input name={element} type="checkbox" defaultChecked={this.state[element]} onChange={this.forCheckList}/>
+          <input name={element} type="checkbox" defaultChecked={this.state[element]} onChange={this.forCheckList} />
           {element}
         </label>
       </div>
     ));
-  
+
     return (
       <div className="addDay">
         <form action="" className="dayForm">
@@ -95,18 +94,18 @@ class Input extends Component {
             <input type="text" className="cardFormInput" name="location" onChange={this.changeHandler} required />
           </div>
           <div className="Date">
-          <form className="date" noValidate>
-            <TextField
-              id="date"
-              type="date"
-              defaultValue="2021-04-01"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              name="date"
-              onChange={this.changeHandler}
-            />
-          </form>
+            <form className="date" noValidate>
+              <TextField
+                id="date"
+                type="date"
+                defaultValue="2021-04-01"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                name="date"
+                onChange={this.changeHandler}
+              />
+            </form>
           </div>
           <div className="radius">
             <select name="radius" onChange={this.changeHandler}>
