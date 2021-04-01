@@ -2,34 +2,48 @@ const path = require('path');
 const cors = require('cors');
 const express = require('express');
 const { v4: uuid } = require('uuid');
+const session = require('express-session');
 const app = express();
+var cookieParser = require('cookie-parser');
 const usersController = require('./controllers/usersController');
 const itineraryController = require('./controllers/itineraryController');
 
 // parse data to json
+app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 
 // serve static data
 app.use(express.static(path.resolve(__dirname, '../client')));
 
-app.use(
-  session({
-    genid: function (req) {
-      return uuid(); // use UUIDs for session IDs
-    },
-    secret: 'dogs and cats',
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false },
-  })
-);
+// app.use(
+//   session({
+//     genid: function (req) {
+//       return uuid(); // use UUIDs for session IDs
+//     },
+//     secret: 'LetsGo',
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: { secure: false },
+//   })
+// );
 
-app.post('/user', usersController.newUser, (req, res) => {
-  console.log('added user', res.locals.entry);
+// handle creating new user
+app.post('/createUser', usersController.newUser, (req, res) => {
   return res.sendStatus(200);
 });
 
+// handle existing user login
+app.post('/user', usersController.login, (req, res) => {
+  return res.sendStatus(200);
+});
+
+// handle get requests to see all itineraries associated with logged in user
+app.get('/itinerary', itineraryController.getItinerary, (req, res) => {
+  return res.status(200).json(res.locals.yelp);
+});
+
+// handle creating a new itinerary
 app.post(
   '/itinerary',
   itineraryController.yelpInfo,
@@ -56,24 +70,3 @@ app.use((err, req, res, next) => {
 
 const PORT = '3000';
 app.listen(PORT, () => console.log('Listening on port 3000'));
-
-// app.get("/user", userController.login, (req, res) => {
-//   console.log(res.locals.entry);
-//   return res.status(200).sendFile("./frontend/app");
-// });
-
-/*
-app.get('/itinerary', (req, res) => {
-  console.log(req.body)
-});
-*/
-
-// app.post('/itinerary', (req, res) => {
-//   console.log(req.body);
-//   res.sendStatus(200);
-// });
-
-// app.post('/idk', (req, res) => {
-//   console.log('request body:', req.body);
-//   return res.sendStatus(200);
-// });

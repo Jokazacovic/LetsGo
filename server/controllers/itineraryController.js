@@ -16,13 +16,14 @@ let yelpREST = axios.create({
 });
 
 itineraryController.yelpInfo = (req, res, next) => {
-  console.log('request body', req.body);
   const { location, radius, budget } = req.body;
   const options = [];
 
   for (let el in req.body) {
     if (req.body[el] === true) options.push(el);
   }
+
+  console.log('LINE 26 OPTIONS:', options);
 
   const fetchYelp = async (arr) => {
     const request = arr.map((el) =>
@@ -31,7 +32,7 @@ itineraryController.yelpInfo = (req, res, next) => {
           location: location,
           radius: radius,
           budget: budget,
-          limit: 10,
+          limit: 20,
           term: el,
         },
       }).then(({ data }) => {
@@ -63,10 +64,10 @@ itineraryController.dbStore = (req, res, next) => {
     Hotels,
     Nightlife,
     Shopping,
-    user_id,
   } = req.body;
   const arts = req.body['Arts & Entertainment'];
   const active = req.body['Active Life'];
+  const user_id = req.cookies.user_id;
 
   const string =
     'INSERT INTO itinerary(date, radius, location, budget, breakfast, lunch, dinner, hotel, active, arts, nightlife, shopping, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *';
@@ -85,13 +86,16 @@ itineraryController.dbStore = (req, res, next) => {
     Shopping,
     user_id,
   ])
-    .then((data) => {
-      console.log('Line 89 DATA ROWS', data.rows);
-
-      res.locals.entry = data.rows;
-      return next();
-    })
+    .then((data) => next())
     .catch((err) => next(err)); // catch for dbQuery;
+};
+
+itineraryController.getItinerary = (req, res, next) => {
+  const str = 'SELECT * FROM itinerary WHERE user_id =$1';
+  db.query(str, [req.cookies.user_id]).then((data) => {
+    res.locals.yelp = data.rows;
+    return next();
+  });
 };
 
 module.exports = itineraryController;

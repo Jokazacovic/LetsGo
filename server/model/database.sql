@@ -24,3 +24,20 @@ CREATE TABLE itinerary(
 
 INSERT INTO itinerary(date, radius, location, budget, breakfast, lunch, dinner, hotel, active, arts, nightlife, shopping, user_id)
 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *;
+
+
+{
+    "location" : "Portland",
+    "date" : "May 30, 2020",
+    "radius" : 200,
+    "budget" : "$",
+    "Breakfast": false,
+    "Lunch": false,
+    "Dinner" : false,
+    "Hotels": false,
+    "Nightlife": true,
+    "Shopping": false,
+    "Active Life" : false,
+    "Arts & Entertainment" : false,
+    "user_id" : 3
+}
