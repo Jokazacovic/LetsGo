@@ -21,3 +21,6 @@ CREATE TABLE itinerary(
     user_id integer NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user(_id)
 );
+
+INSERT INTO itinerary(date, radius, location, budget, breakfast, lunch, dinner, hotel, active, arts, nightlife, shopping, user_id)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *;

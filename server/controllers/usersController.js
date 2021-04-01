@@ -1,5 +1,5 @@
-const db = require("../model/databaseModel");
-const bcyrpt = require("bcrypt");
+const db = require('../model/databaseModel');
+const bcyrpt = require('bcrypt');
 
 const usersController = {};
 
@@ -11,7 +11,7 @@ usersController.newUser = (req, res, next) => {
     .hash(password, saltRounds)
     .then((result) => {
       const str =
-        "INSERT INTO users (user_name, password) VALUES ($1, $2) RETURNING *";
+        'INSERT INTO users (user_name, password) VALUES ($1, $2) RETURNING *';
       db.query(str, [userName, result])
         .then((data) => {
           res.locals.entry = data.rows;

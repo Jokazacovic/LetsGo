@@ -15,53 +15,83 @@ let yelpREST = axios.create({
   },
 });
 
-itineraryController.addDay = (req, res, next) => {
-  const { location, date, radius, budget } = req.body;
+itineraryController.yelpInfo = (req, res, next) => {
+  console.log('request body', req.body);
+  const { location, radius, budget } = req.body;
+  const options = [];
 
-  const arts = req.body['Arts & Entertainment'];
-  const active = req.body['Active Life'];
-  console.log('HERES THE REQUEST BODY', req.body);
+  for (let el in req.body) {
+    if (req.body[el] === true) options.push(el);
+  }
 
-  const firstObj = {
-    Breakfast: false,
-    Lunch: false,
-    Dinner: false,
-    Hotels: false,
-    Nighlife: false,
-    Shopping: false,
-  };
-
-  for (let el in firstObj) {
-    //if (el !== location || date || radius || budget && req.body[el] !== false) {
-    if (req.body[el] !== false) {
+  const fetchYelp = async (arr) => {
+    const request = arr.map((el) =>
       yelpREST('/businesses/search', {
         params: {
           location: location,
           radius: radius,
           budget: budget,
-          limit: 1,
-          categories: el,
+          limit: 10,
+          term: el,
         },
+      }).then(({ data }) => {
+        return data;
       })
-        .then(({ data }) => {
-          console.log('line 47', el, data);
-          firstObj[el] = data;
-        })
-        .catch((err) => console.log('this is error', err));
-    }
-  }
-  console.log('FIRSTOBJ:', firstObj);
+    );
+    return Promise.all(request);
+  };
+  fetchYelp(options).then((a) => {
+    a.forEach((el, i) => {
+      req.body[options[i]] = JSON.stringify(
+        el.businesses[Math.floor(Math.random() * el.businesses.length)]
+      );
+    });
+    next();
+  });
+};
 
-  // yelpREST('/businesses/search', {
-  //   params: { location: location, limit: 3 },
-  // })
-  //   .then(({ data }) => {
-  //     console.log(data);
-  //     next();
-  //   })
-  //   .catch((err) => console.log('this is error', err));
-  return first;
+itineraryController.dbStore = (req, res, next) => {
+  console.log('Line 54 REQUEST BODY', req.body);
+  const {
+    location,
+    date,
+    radius,
+    budget,
+    Breakfast,
+    Lunch,
+    Dinner,
+    Hotels,
+    Nightlife,
+    Shopping,
+    user_id,
+  } = req.body;
+  const arts = req.body['Arts & Entertainment'];
+  const active = req.body['Active Life'];
+
+  const string =
+    'INSERT INTO itinerary(date, radius, location, budget, breakfast, lunch, dinner, hotel, active, arts, nightlife, shopping, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *';
+  db.query(string, [
+    date,
+    radius,
+    location,
+    budget,
+    Breakfast,
+    Lunch,
+    Dinner,
+    Hotels,
+    active,
+    arts,
+    Nightlife,
+    Shopping,
+    user_id,
+  ])
+    .then((data) => {
+      console.log('Line 89 DATA ROWS', data.rows);
+
+      res.locals.entry = data.rows;
+      return next();
+    })
+    .catch((err) => next(err)); // catch for dbQuery;
 };
 
 module.exports = itineraryController;
-BLOC;
