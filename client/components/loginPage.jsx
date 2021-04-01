@@ -22,6 +22,7 @@ export default function Login(props) {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
+        setTripInfo([res]);
       })
       .then(() => {
         history.push('/landing');

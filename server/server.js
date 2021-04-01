@@ -39,7 +39,7 @@ app.post('/user', usersController.login, (req, res) => {
 });
 
 // handle get requests to see all itineraries associated with logged in user
-app.get('/itinerary', itineraryController.getItinerary, (req, res) => {
+app.get('/itinerary/:user_id', itineraryController.getItinerary, (req, res) => {
   return res.status(200).json(res.locals.yelp);
 });
 

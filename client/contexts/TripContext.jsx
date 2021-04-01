@@ -5,7 +5,7 @@ export const TripContext = createContext();
 export const TripContextProvider = (props) => {
   const [tripInfo, setTripInfo] = useState(
     [
-      4, // user ID
+      990, // user ID
       {
         _id: 1,
         date: '2020-05-30',

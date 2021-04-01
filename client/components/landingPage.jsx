@@ -10,9 +10,10 @@ export default function Landing(props) {
   const [tripInfo, setTripInfo] = useContext(TripContext);
   const [loading, setLoading] = useState(true);
 
+  console.log('TRIPINFO:', tripInfo);
 
   useEffect(() => {
-    fetch('http://localhost:3000/itinerary', {
+    fetch(`http://localhost:3000/itinerary/${tripInfo[0]}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -21,7 +22,7 @@ export default function Landing(props) {
       .then((res) => res.json())
       .then((res) => {
         // Coordinate with backend for fetch response data
-        console.log(res)
+        // console.log(res)
         setLoading(false);
         setTripInfo(res);
       })
@@ -125,7 +126,7 @@ export default function Landing(props) {
     );
   }
 
-  const eachTrip = tripInfo.map((element, index) => (
+  const eachTrip = tripInfo.slice(1).map((element, index) => (
     <div className="eachTrip">
       <p>
         Location:
