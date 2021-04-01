@@ -2,10 +2,13 @@ $bg-img: url('../assets/vanLogin.jpeg');
 
 .login-background {
   margin: 0;
-  height: 100vh;
   background-repeat: no-repeat;
   background: $bg-img;
-  background-size: 10vw;
+  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  
 }
 
 .login-container {

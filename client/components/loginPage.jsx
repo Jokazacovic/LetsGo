@@ -29,7 +29,7 @@ export default function Login(props) {
       <div className="login-container">
         <h2>Login</h2>
         <input type="username" name="username" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
-        <input type="text" name="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+        <input type="password" name="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
         <div className="login-buttons">
           <button type="button" onClick={submitLoginInfo}>Login</button>
           <button type="button" onClick={submitLoginInfo}>Create Account</button>
