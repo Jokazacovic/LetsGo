@@ -35,7 +35,7 @@ class Input extends Component {
     });
     // if at least one activity is checked, fetch POST request
     if (sendForm) {
-      fetch('http://localhost:3000/', {
+      fetch('http://localhost:3000/idk', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -47,7 +47,9 @@ class Input extends Component {
           const { history } = this.props;
           history.push('/landing');
         })
-        .catch((err) => console.log('error has occurred in Fetching this.state'));
+        .catch((err) =>
+          console.log('error has occurred in Fetching this.state')
+        );
     } else {
       alert('Check at least one activity!');
     }
@@ -76,56 +78,97 @@ class Input extends Component {
 
   render() {
     // Map Pre-Determined Yelp Categories to React Checkboxes
-    const lists = ['Breakfast', 'Lunch', 'Dinner', 'Hotels', 'Active Life', 'Arts & Entertainment', 'Nightlife', 'Shopping'];
+    const lists = [
+      'Breakfast',
+      'Lunch',
+      'Dinner',
+      'Hotels',
+      'Active Life',
+      'Arts & Entertainment',
+      'Nightlife',
+      'Shopping',
+    ];
     const checkLists = lists.map((element) => (
       <div>
         <label>
-          <input name={element} type="checkbox" defaultChecked={this.state[element]} onChange={this.forCheckList} />
+          <input
+            name={element}
+            type='checkbox'
+            defaultChecked={this.state[element]}
+            onChange={this.forCheckList}
+          />
           {element}
         </label>
       </div>
     ));
 
     return (
-      <div className="addDay">
-        <form action="" className="dayForm">
-          <div className="Location">
-            <label className="cardFormLabel">Location</label>
-            <input type="text" className="cardFormInput" name="location" onChange={this.changeHandler} required />
+      <div className='addDay'>
+        <form action='' className='dayForm'>
+          <div className='Location'>
+            <label className='cardFormLabel'>Location</label>
+            <input
+              type='text'
+              className='cardFormInput'
+              name='location'
+              onChange={this.changeHandler}
+              required
+            />
           </div>
-          <div className="Date">
-            <form className="date" noValidate>
+          <div className='Date'>
+            <form className='date' noValidate>
               <TextField
-                id="date"
-                type="date"
-                defaultValue="2021-04-01"
+                id='date'
+                type='date'
+                defaultValue='2021-04-01'
                 InputLabelProps={{
                   shrink: true,
                 }}
-                name="date"
+                name='date'
                 onChange={this.changeHandler}
               />
             </form>
           </div>
-          <div className="radius">
-            <select name="radius" onChange={this.changeHandler}>
-              <option selected value={1600}> Walking (1mi)</option>
+          <div className='Date'>
+            <form className='date' noValidate>
+              <TextField
+                id='date'
+                type='date'
+                defaultValue='2021-04-01'
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                name='date'
+                onChange={this.changeHandler}
+              />
+            </form>
+          </div>
+          <div className='radius'>
+            <select name='radius' onChange={this.changeHandler}>
+              <option selected value={1600}>
+                {' '}
+                Walking (1mi)
+              </option>
               <option value={3200}> Biking (2mi) </option>
               <option value={8000}>Driving (5mi)</option>
               <option value={16000}>Driving (10mi)</option>
             </select>
           </div>
-          <div className="budget">
-            <select name="budget" onChange={this.changeHandler}>
-              <option selected value="$">$</option>
-              <option value="$$">$$</option>
-              <option value="$$$">$$$</option>
-              <option value="$$$$">$$$$</option>
+          <div className='budget'>
+            <select name='budget' onChange={this.changeHandler}>
+              <option selected value='$'>
+                $
+              </option>
+              <option value='$$'>$$</option>
+              <option value='$$$'>$$$</option>
+              <option value='$$$$'>$$$$</option>
             </select>
           </div>
           {checkLists}
         </form>
-        <button className="addDayBtn" type="button" onClick={this.handleClick}>Create a New Trip</button>
+        <button className='addDayBtn' type='button' onClick={this.handleClick}>
+          Create a New Trip
+        </button>
       </div>
     );
   }
