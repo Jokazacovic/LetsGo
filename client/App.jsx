@@ -11,14 +11,14 @@ const App = () => (
   <Router>
     <TripContextProvider>
       <div>
-        <Route path="/landing" component={Nav} />
-        <Route path="/input" component={Nav} />
-        <Route path="/trip" component={Nav} />
+        <Route path='/landing' component={Nav} />
+        <Route path='/input' component={Nav} />
+        <Route path='/trip' component={Nav} />
         <Switch>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/landing" component={Landing} />
-          <Route exact path="/input" component={Input} />
-          <Route exact path="/trip/:index" component={Trip} />
+          <Route exact path='/' component={Login} />
+          <Route exact path='/landing' component={Landing} />
+          <Route exact path='/input' component={Input} />
+          <Route exact path='/trip/:index' component={Trip} />
         </Switch>
       </div>
     </TripContextProvider>
