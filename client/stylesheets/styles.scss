@@ -1,26 +1,91 @@
 $bg-img: url('../assets/vanLogin.jpeg');
 
+body {
+  margin: 0px;
+}
+
 .login-background {
   margin: 0;
   background-repeat: no-repeat;
   background: $bg-img;
   background-color: #cccccc; /* Used if the image is unavailable */
-  height: 500px; /* You must set a specified height */
+  height: 100vh; /* You must set a specified height */
   background-position: center; /* Center the image */
   background-size: cover; /* Resize the background image to cover the entire container */
-  
 }
 
 .login-container {
-  margin: auto;
-  width: 15%;
+  text-align: center;
+  position: absolute;
+  top: 30%;
+  left: 15%;
+  width: 20%;
   height: 30%;
   color: white;
   font-size: 17px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   padding: 1px;
   border-radius: 2px;
   box-shadow: 1px 1px 5px rgba(22, 22, 22, 0.915);
   margin-bottom: 20px;
   transition-duration: 0.25s;
+}
+
+.login-input {
+  width: 75%;
+  height: 45px;
+  text-align: center;
+  background-color:  rgb(255, 255, 255);
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 2px solid green;
+  color: rgb(0, 114, 95);
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  outline: none;
+
+}
+
+.login-input:focus {
+  color: rgb(0, 114, 95);
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  outline: none;
+}
+
+.login-input::placeholder {
+  color: rgba(0, 134, 112, 0.8);
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  opacity: 1;
+}
+
+.login-buttons{
+  display:inline-block;
+  padding:0.3em 1.2em;
+  margin:0 0.1em 0.1em 0;
+  border:0.16em solid rgba(255,255,255,0);
+  border-radius:2em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Poppins',sans-serif;
+  font-weight:300;
+  color:rgba(0, 134, 112, 0.8);
+  text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+  text-align:center;
+  transition: all 0.2s;
+}
+
+.login-buttons:hover{
+  border-color: rgba(255,255,255,1);
+}
+
+@media all and (max-width:30em){
+  .login-buttons{
+    display:block;
+    margin:0.2em auto;
+  }
 }

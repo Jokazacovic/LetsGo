@@ -27,7 +27,6 @@ class Input extends Component {
 
   // onClick functionality for submit button
   handleClick(e) {
-    e.preventDefault();
     const vals = Object.values(this.state);
     let sendForm = false;
     // check state for checkboxes with 'true' values
@@ -56,7 +55,6 @@ class Input extends Component {
 
   // onChange handlers for Location and Date with inputted value
   changeHandler(e) {
-    e.preventDefault();
     this.setState((state) => ({
       [e.target.name]: e.target.value,
     }));
@@ -64,7 +62,6 @@ class Input extends Component {
 
   // onChange handlers for checkboxes
   forCheckList(e) {
-    e.preventDefault();
     const property = e.target.name;
     if (this.state[property]) {
       this.setState({
