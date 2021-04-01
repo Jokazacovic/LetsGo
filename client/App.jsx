@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { UserContextProvider } from './contexts/UserContext';
+import { TripContextProvider } from './contexts/TripContext';
 import Nav from './components/nav';
 import Login from './components/loginPage';
 import Landing from './components/landingPage';
@@ -9,7 +9,7 @@ import Trip from './components/tripPage';
 
 const App = () => (
   <Router>
-    <UserContextProvider>
+    <TripContextProvider>
       <div>
         <Route path="/landing" component={Nav} />
         <Route path="/input" component={Nav} />
@@ -18,10 +18,10 @@ const App = () => (
           <Route exact path="/" component={Login} />
           <Route exact path="/landing" component={Landing} />
           <Route exact path="/input" component={Input} />
-          <Route exact path="/trip" component={Trip} />
+          <Route exact path="/trip/:index" component={Trip} />
         </Switch>
       </div>
-    </UserContextProvider>
+    </TripContextProvider>
   </Router>
 );
 

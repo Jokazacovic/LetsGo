@@ -46,7 +46,7 @@ class Input extends Component {
         .then((res) => res.json())
         .then(() => {
           const { history } = this.props;
-          history.push('/trip');
+          history.push('/landing');
         })
         .catch((err) => console.log('error has occurred in Fetching this.state'));
     } else {

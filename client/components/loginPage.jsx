@@ -1,16 +1,14 @@
 import React, { useState, useContext } from 'react';
-import { UserContext } from '../contexts/UserContext';
+import { TripContext } from '../contexts/TripContext';
 
 export default function Login(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  // Pull state into component from UserContext using 'useContext' hook
-  const [userInfo, setUserInfo] = useContext(UserContext);
+  // Pull state into component from TripContext using 'useContext' hook
+  const [tripInfo, setTripInfo] = useContext(TripContext);
 
   function submitLoginInfo(e) {
     e.preventDefault();
-
     fetch('/', {
       method: 'POST',
       headers: {
@@ -21,7 +19,7 @@ export default function Login(props) {
       .then((res) => res.json())
       .then((res) => {
         // Coordinate with backend for fetch response data
-        setUserInfo({ trips: res });
+        setTripInfo(res);
       })
       .then(() => {
         const { history } = this.props;
