@@ -25,36 +25,15 @@ class Input extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  // onChange handlers for Location and Date with inputted value
-  changeHandler(e) {
-    this.setState((state) => ({
-      [e.target.name]: e.target.value,
-    }));
-  }
-
-  // onChange handlers for checkboxes
-  forCheckList(e) {
-    const property = e.target.name;
-    if (this.state[property]) {
-      this.setState({
-        [property]: false,
-      });
-    } else {
-      this.setState({
-        [property]: true,
-      });
-    }
-  }
-
   // onClick functionality for submit button
   handleClick(e) {
+    e.preventDefault();
     const vals = Object.values(this.state);
     let sendForm = false;
     // check state for checkboxes with 'true' values
     vals.forEach((ele) => {
       if (ele.toString() === 'true') sendForm = true;
     });
-    console.log(sendForm);
     // if at least one activity is checked, fetch POST request
     if (sendForm) {
       fetch('http://localhost:3000/', {
@@ -66,11 +45,35 @@ class Input extends Component {
       })
         .then((res) => res.json())
         .then(() => {
-          this.props.history.push('/trip');
+          const { history } = this.props;
+          history.push('/landing');
         })
         .catch((err) => console.log('error has occurred in Fetching this.state'));
     } else {
       alert('Check at least one activity!');
+    }
+  }
+
+  // onChange handlers for Location and Date with inputted value
+  changeHandler(e) {
+    e.preventDefault();
+    this.setState((state) => ({
+      [e.target.name]: e.target.value,
+    }));
+  }
+
+  // onChange handlers for checkboxes
+  forCheckList(e) {
+    e.preventDefault();
+    const property = e.target.name;
+    if (this.state[property]) {
+      this.setState({
+        [property]: false,
+      });
+    } else {
+      this.setState({
+        [property]: true,
+      });
     }
   }
 
@@ -118,7 +121,7 @@ class Input extends Component {
           <div className="budget">
             <select name="budget" onChange={this.changeHandler}>
               <option selected value="$">$</option>
-              <option value="$$"> $$ </option>
+              <option value="$$">$$</option>
               <option value="$$$">$$$</option>
               <option value="$$$$">$$$$</option>
             </select>
