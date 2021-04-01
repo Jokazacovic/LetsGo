@@ -14,7 +14,8 @@ usersController.newUser = (req, res, next) => {
         'INSERT INTO users (user_name, password) VALUES ($1, $2) RETURNING *';
       db.query(str, [username, result])
         .then((data) => {
-          res.cookie('user_id', data.rows[0]._id);
+          res.locals.user_id = data.rows[0]._id;
+          // res.cookie('user_id', data.rows[0]._id);
           return next();
         })
         .catch((err) => next(err)); // catch for dbQuery
@@ -27,13 +28,15 @@ usersController.login = (req, res, next) => {
   const getUser = `select * from users where user_name='${username}'`;
   db.query(getUser)
     .then((result) => {
-      console.log('LINE 30 RAN ', result);
+      console.log('LINE 30 RAN ', result.rows[0].password);
       bcrypt
         .compare(password, result.rows[0].password)
         .then((bcryptResult) => {
           if (bcryptResult) {
             // set uid in the session
-            res.cookie('user_id', result.rows[0]._id);
+            res.locals.user_id = result.rows[0]._id;
+            // res.cookie('user_id', result.rows[0]._id);
+            // console.log('THIS IS THE COOKIE VALUE',result.rows[0]._id)
             return next();
           }
           // throw 'wrong email or password';
