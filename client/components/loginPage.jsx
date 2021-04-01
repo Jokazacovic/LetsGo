@@ -17,10 +17,6 @@ export default function Login(props) {
       body: JSON.stringify({ username, password }),
     })
       .then((res) => res.json())
-      .then((res) => {
-        // Coordinate with backend for fetch response data
-        setTripInfo(res);
-      })
       .then(() => {
         const { history } = this.props;
         history.push('/landing');
@@ -29,7 +25,7 @@ export default function Login(props) {
   }
 
   return (
-    <div>
+    <div className="login-background">
       <div className="login-container">
         <h2>Login</h2>
         <input type="username" name="username" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />

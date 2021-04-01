@@ -6,6 +6,7 @@ import Login from './components/loginPage';
 import Landing from './components/landingPage';
 import Input from './components/inputPage';
 import Trip from './components/tripPage';
+import './stylesheets/styles.scss'
 
 const App = () => (
   <Router>

@@ -1,0 +1,23 @@
+$bg-img: url('../assets/vanLogin.jpeg');
+
+.login-background {
+  margin: 0;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background: $bg-img;
+  background-size: 10vw;
+}
+
+.login-container {
+  margin: auto;
+  width: 15%;
+  height: 30%;
+  color: white;
+  font-size: 17px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1px;
+  border-radius: 2px;
+  box-shadow: 1px 1px 5px rgba(22, 22, 22, 0.915);
+  margin-bottom: 20px;
+  transition-duration: 0.25s;
+}
