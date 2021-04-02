@@ -64,11 +64,10 @@ itineraryController.dbStore = (req, res, next) => {
     Hotels,
     Nightlife,
     Shopping,
-    // user_id
+    user_id,
   } = req.body;
   const arts = req.body['Arts & Entertainment'];
   const active = req.body['Active Life'];
-  const user_id = req.cookies.user_id;
 
   const string =
     'INSERT INTO itinerary(date, radius, location, budget, breakfast, lunch, dinner, hotel, active, arts, nightlife, shopping, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *';
@@ -87,7 +86,11 @@ itineraryController.dbStore = (req, res, next) => {
     Shopping,
     user_id,
   ])
-    .then((data) => next())
+    .then((data) => {
+      console.log('LINE 90, data.rows:', data.rows[0].user_id);
+      res.locals.user_id = data.rows[0].user_id;
+      next();
+    })
     .catch((err) => next(err)); // catch for dbQuery;
 };
 

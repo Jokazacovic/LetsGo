@@ -11,12 +11,10 @@ const LoadingPage = () => (
       alignItems: 'center',
       color: 'black',
       fontFamily:
-          '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
+        '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
     }}
-  > 
-    <h5 style={{ flex: '1'}}>
-      Loading...
-    </h5>
+  >
+    <h5 style={{ flex: '1' }}>Create a new trip!</h5>
   </div>
 );
 

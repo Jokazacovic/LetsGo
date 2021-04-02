@@ -44,9 +44,14 @@ app.get('/itinerary/:user_id', itineraryController.getItinerary, (req, res) => {
 });
 
 // handle creating a new itinerary
-app.post('/itinerary', itineraryController.yelpInfo, itineraryController.dbStore, (req, res) => {
-    return res.sendStatus(200);
-});
+app.post(
+  '/itinerary',
+  itineraryController.yelpInfo,
+  itineraryController.dbStore,
+  (req, res) => {
+    return res.status(200).json(res.locals.user_id);
+  }
+);
 
 // catch all for invalid path
 app.use('*', (req, res) => res.sendStatus(404));
