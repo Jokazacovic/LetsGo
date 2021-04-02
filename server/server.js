@@ -30,16 +30,16 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 
 // handle creating new user
 app.post('/createUser', usersController.newUser, (req, res) => {
-  return res.sendStatus(200);
+  return res.status(200).json(res.locals.user_id);
 });
 
 // handle existing user login
 app.post('/user', usersController.login, (req, res) => {
-  return res.sendStatus(200);
+  return res.status(200).json(res.locals.user_id);
 });
 
 // handle get requests to see all itineraries associated with logged in user
-app.get('/itinerary', itineraryController.getItinerary, (req, res) => {
+app.get('/itinerary/:user_id', itineraryController.getItinerary, (req, res) => {
   return res.status(200).json(res.locals.yelp);
 });
 
@@ -49,7 +49,7 @@ app.post(
   itineraryController.yelpInfo,
   itineraryController.dbStore,
   (req, res) => {
-    return res.sendStatus(200);
+    return res.status(200).json(res.locals.user_id);
   }
 );
 
