@@ -58,7 +58,7 @@ export default function Login(props) {
   return (
     <div className='login-background'>
       <div className='login-container'>
-        <h2 className='login'>Login</h2>
+        <h1 className='login'>Let's Go!</h1>
         <form>
           <input
             className='login-input'

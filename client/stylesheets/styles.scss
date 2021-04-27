@@ -1,4 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 $bg-img: url('../assets/vanLogin.jpeg');
+$bg-img2: url('../assets/inputPhoto2.jpg');
+$bg-img3: url('../assets/landing.jpeg');
 
 body {
   margin: 0px;
@@ -15,6 +20,7 @@ body {
 }
 
 .login-container {
+  font-family: 'Poppins', sans-serif;
   text-align: center;
   position: absolute;
   top: 30%;
@@ -65,7 +71,7 @@ body {
 .login-buttons {
   display: inline-block;
   padding: 0.3em 1.2em;
-  margin: 0 0.1em 0.1em 0;
+  margin: 0 0.5em 0.5em 0;
   border: 0.16em solid rgba(255, 255, 255, 0);
   border-radius: 2em;
   box-sizing: border-box;
@@ -78,9 +84,212 @@ body {
   transition: all 0.2s;
 }
 
-@media all and (max-width: 30em) {
-  .login-buttons {
-    display: block;
-    margin: 0.2em auto;
-  }
+.login-buttons:active,
+.login-buttons:focus {
+  outline: 0;
+  border: none;
+  outline-style: none;
+}
+
+.login-buttons:hover {
+  background-color: rgba(34, 148, 129, 0.753);
+  border: 2px solid white;
+  color: white;
+  padding: 6px 25px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.nav-bar {
+  background-color: rgba(22, 22, 22, 0.915);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+// .loading {
+//   min-height: 93.4vh;
+//   flex-direction: column;
+//   justify-content: center;
+//   background: rgba(0, 0, 0, 0.6);
+//   align-items: center;
+//   color: white;
+//   font-family: 'Poppins', sans-serif;
+// }
+
+.landing {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  text-align: center;
+  background-repeat: no-repeat;
+  background: $bg-img3;
+  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 100vh; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.landing-button {
+  background-color:white;
+  border: 2px solid green;
+  color: rgb(0, 134, 112);
+  padding: 6px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+  margin: 10px;
+  font-family: 'Poppins', sans-serif;
+  transition-duration: 0.25s;
+}
+
+.eachTrip {
+  margin: auto;
+  /* width: 45%; */
+  width: 45%;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  font-size: 17px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1px;
+  border-radius: 2px;
+  box-shadow: 1px 1px 5px rgba(22, 22, 22, 0.915);
+  margin-bottom: 20px;
+  transition-duration: 0.25s;
+}
+
+.eachTrip:hover {
+  width: 48%;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 1px 1px 5px rgba(22, 22, 22, 0.915);
+}
+
+.trip-container {
+  margin-top: 50px;
+}
+
+.input-background {
+  background: $bg-img2;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 100vh; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-size: cover;
+}
+.addDay {
+  width: 75%;
+  height: 45px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+  // border: 2px solid green;
+  color: rgb(0, 114, 95);
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  outline: none;
+}
+
+.cardFormInput{
+  width: 75%;
+  height: 45px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 2px solid green;
+  color: rgb(0, 114, 95);
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  outline: none;
+}
+
+.addDayBtn {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.5em 0.5em 0;
+  border: 0.16em solid rgba(255, 255, 255, 0);
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  color: rgba(0, 134, 112, 0.8);
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.cardFormInput:focus {
+  color: rgb(0, 114, 95);
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  outline: none;
+}
+
+.cardFormInput::placeholder {
+  color: rgba(0, 134, 112, 0.8);
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  opacity: 1;
+}
+
+
+.addDayBtn:active,
+.addDayBtn:focus {
+  outline: 0;
+  border: none;
+  outline-style: none;
+}
+
+.addDayBtn:hover {
+  background-color: rgba(34, 148, 129, 0.753);
+  border: 2px solid white;
+  color: white;
+  padding: 6px 25px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+.nav-bar {
+  background-color: rgba(34, 148, 129, 0.753);
+}
+#navMenu{
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.5em 0.5em 0;
+  border: 0.16em solid rgba(255, 255, 255, 0);
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  color: rgba(0, 134, 112, 0.8);
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transition: all 0.2s;
+}
+.navMenu:active,
+.navMenu:focus {
+  outline: 0;
+  border: none;
+  outline-style: none;
+}
+
+.navMenu:hover {
+  background-color: rgba(34, 148, 129, 0.753);
+  border: 2px solid white;
+  color: white;
+  padding: 6px 25px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
 }

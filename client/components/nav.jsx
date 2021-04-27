@@ -8,13 +8,13 @@ const Nav = () => (
       <Link to="/landing">
         Let's Go
       </Link>
-        <Link to="/landing">
+        <Link id="navMenu" to="/landing">
           <button type="button">Dashboard</button>
         </Link>
-        <Link to="/input">
+        <Link id="navMenu" to="/input">
           <button type="button">New Trip</button>
         </Link>
-        <Link to="/">
+        <Link id="navMenu" to="/">
           <button type="button">Sign Out</button>
         </Link>
       </span>

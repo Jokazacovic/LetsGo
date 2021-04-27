@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { TripContext } from '../contexts/TripContext';
-
+3
 export default function InputFor() {
   let history = useHistory();
   const [tripInfo, setTripInfo] = useContext(TripContext);
@@ -104,6 +104,7 @@ export default function InputFor() {
   ));
 
   return (
+    <div className="input-background">
     <div className='addDay'>
       <form action='' className='dayForm'>
         <div className='Location'>
@@ -156,6 +157,7 @@ export default function InputFor() {
       <button className='addDayBtn' type='button' onClick={handleClick}>
         Create a New Trip
       </button>
+     </div>
     </div>
   );
 }

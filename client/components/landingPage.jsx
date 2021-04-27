@@ -31,7 +31,7 @@ export default function Landing(props) {
   // if loading, ask for a state change
   if (loading) {
     return (
-      <div>
+      <div className='landing'>
         <LoadingPage />
       </div>
     );
@@ -45,17 +45,21 @@ export default function Landing(props) {
       </p>
       <p>
         Date:
-        {element.date}
+        {element.date.slice(0, 10).padStart(11, ' ')}
       </p>
       <Link to={`/trip/${index}`} children={<Trip key={index} />}>
-        <button type='button'>View Trip Details</button>
+        <button type='button' className='landing-button'>
+          View Trip Details
+        </button>
       </Link>
     </div>
   ));
   return (
-    <div>
+    <div className='landing'>
       <Link to='/input'>
-        <button type='button'>Create a new itinerary</button>
+        <button className='landing-button' type='button'>
+          Create a new itinerary
+        </button>
       </Link>
       <div className='trip-container'>{eachTrip}</div>
     </div>
